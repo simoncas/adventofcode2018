@@ -11,13 +11,13 @@ namespace adventOfCode18.provider
         public static async Task Run()
         {
             //Load all classes that implements the IDayRunner interface 
-            var types = AppDomain.CurrentDomain.GetAssemblies()
+            var challenges = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(p => p.IsClass && typeof(IChallenge).IsAssignableFrom(p));
             var tasks = new List<Task>();
-            foreach (var t in types)
+            foreach (var c in challenges)
             {
-                var dayRunner = (IChallenge) Activator.CreateInstance(t);
+                var dayRunner = (IChallenge) Activator.CreateInstance(c);
                 tasks.AddRange(DayRunner(dayRunner));
             }
             await Task.WhenAll(tasks);

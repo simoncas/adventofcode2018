@@ -27,7 +27,7 @@ namespace adventOfCode18.challenges.day1
         public async Task<string> Challenge2()
         {
             var frequencies = await ParsePuzzle(Puzzle);
-            var frequencyHistories = new SortedSet<int>();
+            var frequencyHistories = new HashSet<int>();
             var crtFrequency = 0;
             while (true)
             {
@@ -38,7 +38,6 @@ namespace adventOfCode18.challenges.day1
                     {
                         return crtFrequency.ToString();
                     }
-
                     frequencyHistories.Add(crtFrequency);
                 }
             }
