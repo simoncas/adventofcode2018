@@ -2,13 +2,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using adventOfCode18.day;
 
-namespace adventOfCode18.day1
+namespace adventOfCode18.challenges.day1
 {
     public class Day1Challenge : IChallenge
     {
-        private const string Puzzle = "day1/puzzle1.txt";
+        private const string Puzzle = "challenges/day1/puzzle1.txt";
 
         private async Task<IReadOnlyCollection<int>> ParsePuzzle(string path)
         {

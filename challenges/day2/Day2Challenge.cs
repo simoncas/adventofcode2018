@@ -1,7 +1,6 @@
 using System.Threading.Tasks;
-using adventOfCode18.day;
 
-namespace adventOfCode18.day2
+namespace adventOfCode18.challenges.day2
 {
     public class Day2Challenge : IChallenge
 

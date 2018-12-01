@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace adventOfCode18.day
+namespace adventOfCode18.challenges
 {
     public interface IChallenge
     {
