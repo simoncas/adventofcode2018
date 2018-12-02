@@ -9,19 +9,15 @@ namespace adventOfCode18.provider
 {
     public static class AdventOfCodeRunner
     {
-        public static async Task Run()
+        public static void Run()
         {
             //Load all classes that implements the IDayRunner interface 
             var challenges = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
-                .Where(p => p.IsClass && typeof(IChallenge).IsAssignableFrom(p));
-            var tasks = new List<Task>();
-            foreach (var c in challenges)
-            {
-                var dayRunner = (IChallenge) Activator.CreateInstance(c);
-                tasks.AddRange(DayRunner(dayRunner));
-            }
-            Task.WaitAll(tasks.ToArray());
+                .Where(p => p.IsClass && typeof(IChallenge).IsAssignableFrom(p))
+                .Select(c => (IChallenge) Activator.CreateInstance(c))
+                .SelectMany(DayRunner);
+            Task.WaitAll(challenges.ToArray());
         }
 
         private static IEnumerable<Task> DayRunner(IChallenge challenge)
