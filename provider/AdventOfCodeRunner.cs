@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using adventOfCode18.challenges;
+using adventOfCode18.challenges.day2;
 
 namespace adventOfCode18.provider
 {
@@ -20,7 +21,7 @@ namespace adventOfCode18.provider
                 var dayRunner = (IChallenge) Activator.CreateInstance(c);
                 tasks.AddRange(DayRunner(dayRunner));
             }
-            await Task.WhenAll(tasks);
+            Task.WaitAll(tasks.ToArray());
         }
 
         private static IEnumerable<Task> DayRunner(IChallenge challenge)

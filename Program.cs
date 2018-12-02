@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using adventOfCode18.provider;
 
 namespace adventOfCode18

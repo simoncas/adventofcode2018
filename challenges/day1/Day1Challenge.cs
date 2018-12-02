@@ -9,15 +9,6 @@ namespace adventOfCode18.challenges.day1
     {
         private const string Puzzle = "challenges/day1/puzzle1.txt";
 
-        private async Task<IReadOnlyCollection<int>> ParsePuzzle(string path)
-        {
-            using (var sr = new StreamReader(path))
-            {
-                var content = await sr.ReadToEndAsync();
-                return content.Split("\n").Select(int.Parse).ToArray();
-            }
-        }
-
         public async Task<string> Challenge1()
         {
             var frequencies = await ParsePuzzle(Puzzle);
@@ -42,6 +33,14 @@ namespace adventOfCode18.challenges.day1
                 }
             }
         }
-
+        
+        private async Task<IReadOnlyCollection<int>> ParsePuzzle(string path)
+        {
+            using (var sr = new StreamReader(path))
+            {
+                var content = await sr.ReadToEndAsync();
+                return content.Split("\n").Select(int.Parse).ToArray();
+            }
+        }
     }
 }
