@@ -33,7 +33,7 @@ namespace adventOfCode18.challenges.day${dayNum}
 {
     public class Day${dayNum}Challenge : IChallenge
     {
-        private const string Puzzle = \"challenges/day${dayNum}/puzzle1.txt\";
+        private const string Puzzle = \"challenges/day${dayNum}/puzzle${dayNum}.txt\";
 
         public async Task<string> Challenge1()
         {

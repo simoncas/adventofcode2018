@@ -11,7 +11,7 @@ namespace adventOfCode18.provider
     {
         public static void Run()
         {
-            //Load all classes that implements the IDayRunner interface 
+            //Load dynamically all classes that implements the IDayRunner interface
             var challenges = AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(s => s.GetTypes())
                 .Where(p => p.IsClass && typeof(IChallenge).IsAssignableFrom(p))
