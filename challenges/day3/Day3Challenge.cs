@@ -23,15 +23,6 @@ namespace adventOfCode18.challenges.day3
             var ids = claims.Select(c => c.Id).ToArray();
             var overlappedIds = claims.SelectMany(c => c.Area.ToArray()).GroupBy(x => x.Item2)
                 .Where(g => g.Count() > 1).SelectMany(g => g.Select(p => p.Item1)).Distinct().ToArray();
-
-            foreach (var id in ids)
-            {
-                if (!overlappedIds.Contains(id))
-                {
-                    return id.ToString();
-                }
-            }
-
             return ids.First(id => !overlappedIds.Contains(id));
         }
         
