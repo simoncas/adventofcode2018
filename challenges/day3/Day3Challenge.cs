@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace adventOfCode18.challenges.day3
@@ -47,14 +48,15 @@ namespace adventOfCode18.challenges.day3
 
             public Claim(String rawClaim)
             {
-                var tokens = rawClaim.Split(" ");
-                Id = tokens[0];
-                InchesLeft = int.Parse(tokens[2].Split(",").First());
-                InchesTop = int.Parse(tokens[2].Split(",").Last().Replace(":",""));
-                Wide = int.Parse(tokens[3].Split("x").First());
-                Height = int.Parse(tokens[3].Split("x").Last());
+                var linePattern =
+                    new Regex("#(?<id>[0-9]+) @ (?<y>[0-9]+),(?<x>[0-9]+): (?<width>[0-9]+)x(?<height>[0-9]+)");
+                var match = linePattern.Match(rawClaim);
+                Id = match.Groups["id"].Value;
+                InchesLeft = int.Parse(match.Groups["y"].Value);
+                InchesTop = int.Parse(match.Groups["x"].Value);
+                Wide = int.Parse(match.Groups["width"].Value);
+                Height = int.Parse(match.Groups["height"].Value);
                 Area = new List<(string,string)>();
-
                 for (var i = InchesLeft+1; i <= InchesLeft+Wide; i++)
                 {
                     for (var j = InchesTop+1; j <= InchesTop+Height; j++)
