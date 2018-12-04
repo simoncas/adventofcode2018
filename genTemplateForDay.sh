@@ -3,7 +3,6 @@
 # exit on error
 set -e
 cd "$(dirname "$0")"
-
 if [[ $# -eq 0 ]]
     then
     echo "No arguments supplied, day number must be supplied"
@@ -11,7 +10,6 @@ if [[ $# -eq 0 ]]
 fi
 
 dayNum=$1
-
 if [[ -d challenges/day${dayNum} ]]
     then
     echo "Challenge ${dayNum} already exists"
@@ -19,7 +17,6 @@ if [[ -d challenges/day${dayNum} ]]
 fi
 
 # Create the challenge template for the desired day
-
 mkdir -p challenges/day${dayNum}
 touch challenges/day${dayNum}/Day${dayNum}Challenge.cs
 touch challenges/day${dayNum}/puzzle${dayNum}.txt
